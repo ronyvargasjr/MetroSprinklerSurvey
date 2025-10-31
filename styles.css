@@ -53,8 +53,9 @@ h1{font-size:48px;margin:0 0 12px;color:var(--white);text-shadow:0 6px 18px rgba
 .lead{color:var(--muted);font-size:18px;margin-top:6px}
 h2{font-size:36px;margin:0 0 12px;color:var(--white)}
 p{font-size: 1.5rem;}
-.cards{display:flex;gap:18px;justify-content:center;margin-top:18px}
+.cards{display:flex;flex-wrap: wrap; gap:18px;justify-content:center;margin-top:18px}
 .card{background:var(--accent-gradient);padding:18px 22px;border-radius:12px;color:var(--white);box-shadow:0 6px 20px rgba(0,0,0,0.6); font-weight: bold;}
+.card-label{font-size: 30px;}
 
 #section-0{
     background: url(/images/MSS-Background4.png);
@@ -64,17 +65,7 @@ p{font-size: 1.5rem;}
     background-attachment: fixed;
 }
 
-/* small screens: hide nav, show top-left floating menu */
-@media (max-width:760px){
-  #section-0{background: url(/images/MSS-BackgroundVertical.png);background-size: cover; background-attachment: fixed;}
-  .nav-wrap{display:none}
-  .section-inner{padding:20px;}
-  h1{font-size:32px}
-  p{font-size: 15px;}
-  .ronyvpic{
-    max-width: 200px;
-  }
-}
+
 
 /* subtle map-like background echoing the provided image */
 .content-wrap::before{content:"";position:absolute;inset:0;background-image:url('images/MSS-Background1.png');background-size:cover;background-position:center;opacity:.5;mix-blend-mode:overlay;pointer-events:none}
@@ -96,15 +87,32 @@ p{font-size: 1.5rem;}
 .card{position:relative}
 .card-detail{
   position:absolute;left:50%;top:100%;transform:translate(-50%,8px) scale(.98);
-  min-width:220px;max-width:360px;padding:12px 14px;border-radius:10px;
+  min-width:520px;max-width:560px;padding:12px 14px;border-radius:10px;
   background:linear-gradient(180deg, rgba(34,35,38,0.98), rgba(16,18,20,0.98));
   color:var(--white);box-shadow:0 18px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,90,60,0.06);
   opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s cubic-bezier(.2,.9,.3,1);
   z-index:50;font-size:0.95rem;text-align:left
 }
 .card-detail .title{font-weight:700;margin-bottom:6px;color:var(--accent2)}
-.card-detail .meta{color:var(--muted);font-size:.9rem}
+.card-detail .meta{color:var(--muted);font-size:1.3rem}
 .card-detail::after{content:"";position:absolute;width:10px;height:10px;background:inherit;transform:rotate(45deg);left:50%;top:-5px;margin-left:-5px;border-left:1px solid rgba(255,90,60,0.06);border-top:1px solid rgba(255,90,60,0.06)}
 
 /* show when hovered, focused, or programmatically opened */
 .card:hover .card-detail, .card:focus-within .card-detail, .card.open .card-detail{opacity:1;transform:translate(-50%,6px) scale(1);pointer-events:auto}
+
+/* small screens: hide nav, show top-left floating menu */
+@media (max-width:760px){
+  #section-0{background: url(/images/MSS-BackgroundVertical.png);background-size: cover; background-attachment: fixed;}
+  .nav-wrap{display:none}
+  .section-inner{padding:20px;}
+  h1{font-size:32px}
+  p{font-size: 15px;}
+  .ronyvpic{
+    max-width: 200px;
+  }
+
+  .card-detail{
+    min-width: 300px;
+    max-width: 500px;
+  }
+}
